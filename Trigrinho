@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Trigrinho Simples</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background-color: #f8f8f8;
+    }
+    .slot {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+    .symbol {
+      width: 80px;
+      height: 80px;
+      margin: 10px;
+      font-size: 40px;
+      line-height: 80px;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: gold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .message {
+      font-size: 20px;
+      margin-top: 15px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎰 Trigrinho Simples 🎰</h1>
+  <div class="slot" id="slot">
+    <div class="symbol">🐯</div>
+    <div class="symbol">🐯</div>
+    <div class="symbol">🐯</div>
+  </div>
+  <button onclick="girar()">GIRAR</button>
+  <div class="message" id="mensagem"></div>
+
+  <script>
+    const simbolos = ['🐯', '💰', '🍀', '🧧', '🔥', '👑'];
+    
+    function girar() {
+      const resultado = [];
+      const slotDivs = document.querySelectorAll('.symbol');
+      const mensagem = document.getElementById('mensagem');
+      mensagem.textContent = '';
+
+      for (let i = 0; i < 3; i++) {
+        const simbolo = simbolos[Math.floor(Math.random() * simbolos.length)];
+        slotDivs[i].textContent = simbolo;
+        resultado.push(simbolo);
+      }
+
+      if (resultado[0] === resultado[1] && resultado[1] === resultado[2]) {
+        mensagem.textContent = "🎉 Você Ganhou! 🎉";
+      } else {
+        mensagem.textContent = "Tente novamente!";
+      }
+    }
+  </script>
+</body>
+</html>
